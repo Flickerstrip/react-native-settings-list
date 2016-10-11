@@ -29,7 +29,8 @@ class SettingsList extends React.Component {
     borderColor: 'black',
     defaultItemSize: 50,
     underlayColor: 'transparent',
-    defaultTitleStyle: {fontSize: 16}
+    defaultTitleStyle: {fontSize: 16},
+    useScrollView: true,
   };
 
   _getGroups(){
@@ -67,12 +68,13 @@ class SettingsList extends React.Component {
   }
 
   render(){
+    var ParentView = this.props.useScrollView ? ScrollView : View; 
     return (
-      <ScrollView style={{flex:1}}>
+      <ParentView style={{flex:1}}>
         {this._getGroups().map((group, index) => {
           return this._groupView(group, index);
         })}
-      </ScrollView>
+      </ParentView>
     )
   }
 
